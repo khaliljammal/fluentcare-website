@@ -31,6 +31,8 @@ Once the app is available, also update the “coming soon” note near the final
 
 Serve the contents of `dist/` with a static website host. Keep the HTML, stylesheet, script, and image together; the page uses relative asset URLs.
 
+For Vercel, import this repository with the project root set to the repository root. `vercel.json` selects `dist/` as the output directory and skips installation and build commands. Use `main` as the production branch.
+
 Current private review site: https://fluentcare-clinic-landing.ambula-healt-8265.chatgpt.site/
 
 ## Content notes

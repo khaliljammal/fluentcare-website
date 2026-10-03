@@ -7,7 +7,7 @@ const availableLinks=Object.entries(DOWNLOAD_LINKS).filter(([,url])=>url);
 if(availableLinks.length){document.querySelector('#download-title').textContent='Download FluentCare';dialog.querySelector('h2 + p').textContent='Choose your phone to get FluentCare.';availableLinks.forEach(([platform,url])=>{const link=document.createElement('a');link.className='button dark';link.href=url;link.textContent=platform==='ios'?'Download on the App Store':'Get it on Google Play';document.querySelector('#store-options').append(link);});}
 else{const options=document.querySelector('#store-options');options.className='store-coming';for(const label of ['App Store','Google Play']){const option=document.createElement('span');option.append(label);const note=document.createElement('small');note.textContent='Coming soon';option.append(note);options.append(option);}}
 const EXAMPLES = {
-  welcome: { english: 'Hello, it’s good to see you.', spanish: 'Hola, qué gusto verle.', reply: 'Gracias. Me alegra estar aquí.', translation: 'Thank you. I’m glad to be here.' },
+  welcome: { english: 'Hello. Do you have an appointment today?', spanish: 'Hola. ¿Tiene una cita hoy?', reply: 'Sí, a las diez de la mañana.', translation: 'Yes, at ten this morning.' },
   appointment: { english: 'Would Tuesday morning work for your next visit?', spanish: '¿Le vendría bien el martes por la mañana para su próxima visita?', reply: 'Sí, el martes por la mañana está bien.', translation: 'Yes, Tuesday morning works.' },
   comfort: { english: 'Would you like a glass of water?', spanish: '¿Le gustaría un vaso de agua?', reply: 'Sí, por favor. Muchas gracias.', translation: 'Yes, please. Thank you very much.' }
 };
