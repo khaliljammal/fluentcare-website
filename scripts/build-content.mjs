@@ -5,14 +5,9 @@ import {fileURLToPath} from 'node:url';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const origin='https://www.fluentcare.io';
-export const escapeHTML=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-export function validateLink(href){
-  if(typeof href!=='string'||!href||/[\s\\\x00-\x1f]/.test(href))throw new Error('Invalid link');
-  if(href.startsWith('#'))return;
-  if(href.startsWith('/')&&!href.startsWith('//'))return;
-  const url=new URL(href);
-  if(!['https:','http:','mailto:'].includes(url.protocol))throw new Error('Unsupported link protocol');
-}
+import {escapeHTML,validateLink} from './render-utils.mjs';
+import {renderVisualPage,validatePresentation} from './visual-layouts.mjs';
+export {escapeHTML,validateLink};
 export function parsePage(text,filename){
   const match=text.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
   if(!match)throw new Error(`${filename}: use JSON front matter between --- lines`);
@@ -30,10 +25,17 @@ export function parsePage(text,filename){
     if(token.type==='heading'&&token.depth===1)throw new Error(`${filename}: H1 comes from the template`);
     if(token.type==='link')validateLink(token.href);
   });
-  return {meta,html:marked.parser(tokens)};
+  validatePresentation(meta);
+  return {meta,body,html:marked.parser(tokens)};
 }
-export function renderPage(page,template,preview){
-  const {meta,html}=page;const values={TITLE:escapeHTML(meta.title),DESCRIPTION:escapeHTML(meta.description),HEADING:escapeHTML(meta.heading),PAGE_TYPE:escapeHTML(meta.page_type),CANONICAL:origin+meta.slug,ROBOTS:preview?'noindex,nofollow':'index,follow',BODY:html,PREVIEW:preview?'<div class="editorial-preview">Draft preview · publication review pending</div>':''};
+export function renderPage(page,template,preview,guides=[]){
+  const {meta,html}=page;
+  const crumbs=[{name:'Home',url:origin+'/'}];
+  if(meta.slug.startsWith('/resources/')&&meta.slug!=='/resources/')crumbs.push({name:'Resources',url:origin+'/resources/'});
+  crumbs.push({name:meta.presentation?.breadcrumb||meta.heading,url:origin+meta.slug});
+  const breadcrumbs='<nav class="breadcrumbs" aria-label="Breadcrumb">'+crumbs.map((crumb,index)=>index===crumbs.length-1?'<span aria-current="page">'+escapeHTML(crumb.name)+'</span>':'<a href="'+escapeHTML(new URL(crumb.url).pathname)+'">'+escapeHTML(crumb.name)+'</a>').join('<span aria-hidden="true"> / </span>')+'</nav>';
+  const structuredData='<script type="application/ld+json">'+JSON.stringify({'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:crumbs.map((crumb,index)=>({'@type':'ListItem',position:index+1,name:crumb.name,item:crumb.url}))}).replace(/</g,'\\u003c')+'</script>';
+  const values={TITLE:escapeHTML(meta.title),DESCRIPTION:escapeHTML(meta.description),HEADING:escapeHTML(meta.heading),PAGE_TYPE:escapeHTML(meta.page_type),CANONICAL:origin+meta.slug,ROBOTS:preview?'noindex,nofollow':'index,follow',BODY:html,PAGE_CONTENT:renderVisualPage(page,breadcrumbs,guides),BREADCRUMBS:breadcrumbs,STRUCTURED_DATA:structuredData,PREVIEW:preview?'<div class="editorial-preview">Draft preview · publication review pending</div>':''};
   return template.replace(/\{\{([A-Z_]+)\}\}/g,(_,key)=>{if(!(key in values))throw new Error(`Unknown template field ${key}`);return values[key];});
 }
 export function sitemap(slugs){return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+slugs.map(slug=>`  <url><loc>${origin}${slug}</loc></url>`).join('\n')+'\n</urlset>\n';}
@@ -56,12 +58,13 @@ export async function build({includeDrafts=false}={}){
   let prior=[];try{prior=JSON.parse(await readFile(join(dist,'content-manifest.json'),'utf8'));}catch(error){if(error.code!=='ENOENT')throw error;}
   if(!Array.isArray(prior)||prior.some(slug=>!/^\/[a-z0-9-]+(?:\/[a-z0-9-]+)*\/$/.test(slug)))throw new Error('Invalid generated-page manifest');
   const selected=pages.filter(p=>includeDrafts||p.meta.status==='published');
-  const documents=new Map([['/',await readFile(join(dist,'index.html'),'utf8')],...selected.map(page=>[page.meta.slug,renderPage(page,template,includeDrafts)])]);
+  const guides=selected.filter(p=>p.meta.page_type==='guide'&&p.meta.status==='published');
+  const documents=new Map([['/',await readFile(join(dist,'index.html'),'utf8')],...selected.map(page=>[page.meta.slug,renderPage(page,template,includeDrafts,guides)])]);
   // Stylesheets and canonical URLs aren't navigation. Check only actual page links.
   validatePageLinks(new Map([...documents].map(([slug,html])=>[slug,html.replace(/<head>[\s\S]*?<\/head>/,'')])));
   if(includeDrafts){await rm(output,{recursive:true,force:true});await cp(dist,output,{recursive:true});}
   for(const slug of prior)await rm(join(output,slug.slice(1)),{recursive:true,force:true});
-  for(const page of selected){const directory=join(output,page.meta.slug.slice(1));await mkdir(directory,{recursive:true});await writeFile(join(directory,'index.html'),renderPage(page,template,includeDrafts));}
+  for(const page of selected){const directory=join(output,page.meta.slug.slice(1));await mkdir(directory,{recursive:true});await writeFile(join(directory,'index.html'),renderPage(page,template,includeDrafts,guides));}
   await writeFile(join(output,'content-manifest.json'),JSON.stringify(selected.map(p=>p.meta.slug),null,2)+'\n');
   await writeFile(join(output,'sitemap.xml'),sitemap(['/',...pages.filter(p=>p.meta.status==='published').map(p=>p.meta.slug)]));
   await writeFile(join(output,'robots.txt'),includeDrafts?'User-agent: *\nDisallow: /\n':'User-agent: *\nAllow: /\n\nSitemap: '+origin+'/sitemap.xml\n');

@@ -10,11 +10,14 @@
   <meta name="twitter:card" content="summary"><meta name="twitter:title" content="{{TITLE}}"><meta name="twitter:description" content="{{DESCRIPTION}}">
   <meta name="theme-color" content="#123B3A">
   <link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/content.css">
+  {{STRUCTURED_DATA}}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site-header"><div class="wrap nav"><a class="brand" href="/" aria-label="FluentCare home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>fluentcare</a><nav aria-label="Main navigation"><a href="/#how-it-works">How it works</a><a href="/#privacy">Privacy</a><a href="https://fluentcare.web.app/support/">Contact us</a></nav></div></header>
+<header class="site-header"><div class="wrap nav"><a class="brand" href="/" aria-label="FluentCare home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>fluentcare</a><nav aria-label="Main navigation"><a href="/medical-translation-app/">Product</a><a href="/pricing/">Pricing</a><a href="/resources/">Resources</a></nav><a class="button small" href="/get-started/">Get started</a></div></header>
 {{PREVIEW}}
-<main id="main" class="content-page" data-page-type="{{PAGE_TYPE}}"><article><p class="eyebrow">For independent clinic teams</p><h1>{{HEADING}}</h1><div class="article-body">{{BODY}}</div></article></main>
-<footer class="wrap site-footer"><div class="footer-top"><a class="brand" href="/">fluentcare</a><p>Live voice translation for clinic teams.</p><nav aria-label="Footer navigation"><a href="https://fluentcare.web.app/privacy-policy/">Privacy</a><a href="https://fluentcare.web.app/terms/">Terms</a><a href="https://fluentcare.web.app/support/">Support</a></nav></div><div class="footer-bottom"><span>© 2026 FluentCare</span><p>AI translation is intended for routine communication and can make mistakes.</p></div></footer>
+<main id="main" data-page-type="{{PAGE_TYPE}}">{{PAGE_CONTENT}}</main>
+<footer class="wrap site-footer"><div class="footer-top"><a class="brand" href="/">fluentcare</a><p>Live voice translation for clinic teams.</p><nav aria-label="Footer navigation"><a href="/privacy-and-security/">Privacy</a><a href="https://fluentcare.web.app/terms/">Terms</a><a href="https://fluentcare.web.app/support/">Support</a><button type="button" class="analytics-settings" data-analytics-choices>Analytics choices</button></nav></div><div class="footer-bottom"><span>© 2026 FluentCare</span><p>AI translation is intended for routine communication and can make mistakes.</p></div></footer>
+<script src="/content.js" defer></script>
+<script type="module" src="/analytics.mjs"></script>
 </body></html>

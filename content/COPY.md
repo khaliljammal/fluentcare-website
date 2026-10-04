@@ -36,3 +36,11 @@ Inputs: audience, practical question, owning URL, primary intent, verified facts
 Return concise Markdown, metadata, a claim/source record and unresolved questions. Keep missing facts in the review record rather than putting placeholders on a public page.
 
 Before publication, check that every section adds value, factual statements have evidence, links work, metadata is unique, the preview renders, and the review record is complete.
+
+## Design system
+
+Read `DESIGN.md` before drafting. Use the shared Markdown template, colors, font stack, buttons, navigation and footer. Do not create page-specific visual styles or inline HTML. Verify the shared stylesheets, one H1 and phone layout before review.
+
+## Tell the story visually
+
+Read `DESIGN.md` and select an existing reviewed presentation layout. Start with the clinic’s need, explain the product or workflow in short sections, and end with a real next step. Use concise headings, specific examples and a useful visual. Do not turn an article into a sales wall or hide evaluation limits. The component renderer owns headings, cards and images; Markdown supplies the reviewed explanatory content. New assets, component types and facts need review before publication. Never invent store downloads, customer testimonials, accuracy statistics or healthcare compliance claims.
