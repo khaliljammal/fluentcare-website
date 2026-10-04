@@ -7,3 +7,12 @@ node_modules/
 .openai/
 .vercel/
 *.log
+
+.preview/
+
+# Keep internal project evidence and the initial product draft local.
+content/PRODUCT-FACTS.md
+content/POSTHOG.md
+content/page-backlog.csv
+content/reviews/P02.md
+content/pages/medical-translation-app.md

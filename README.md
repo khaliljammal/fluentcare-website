@@ -21,6 +21,29 @@ Open http://localhost:4173. No installation or build step is needed.
 - `dist/app.js` — download options, conversation previews, and app walkthrough
 - `dist/clinic-conversation.jpg` — generated illustrative clinic photograph
 
+## SEO and AI-authored content
+
+The public site stays prebuilt in `dist/`, so the existing Vercel configuration does not need a new runtime or build service. The homepage has a www canonical URL, social metadata and factual Organization data. `robots.txt` references the generated sitemap.
+
+For content development, use Node 20 or newer:
+
+```sh
+npm ci --ignore-scripts
+npm run check:content
+npm run build:content
+npm run preview:content
+```
+
+`build:content` includes only pages whose front matter says `published`, with claim/CTA verification and a dated review record. Commit the generated `dist/` output with its source. The GitHub content check detects stale output on a pull request.
+
+`preview:content` writes an ignored `.preview/` directory. It includes draft pages with `noindex,nofollow`, a draft banner and restrictive crawler rules. Do not deploy `.preview/` as the public output directory. Drafts are absent from the production sitemap and `dist/` routes.
+
+Write pages in `content/pages/*.md`, using JSON front matter between `---` lines. Shared navigation and page metadata come from `templates/page.html`; article styling is in `dist/content.css`. Markdown supports headings, paragraphs, lists, tables and safe links. Raw HTML, images and duplicate H1s are rejected until their templates are reviewed.
+
+Read `content/COPY.md` before an AI writing run. Supply verified product evidence and a page brief privately; keep internal plans, analytics configuration and confidential review evidence out of this public repository. Use only an approved public summary in published pages.
+
+This SEO change does not install a marketing analytics SDK or change app capture settings.
+
 ## Add app download links
 
 Set the verified App Store and Google Play URLs in `DOWNLOAD_LINKS` at the top of `dist/app.js`. The download dialog automatically shows buttons for configured platforms.
@@ -33,7 +56,6 @@ Serve the contents of `dist/` with a static website host. Keep the HTML, stylesh
 
 For Vercel, import this repository with the project root set to the repository root. `vercel.json` selects `dist/` as the output directory and skips installation and build commands. Use `main` as the production branch.
 
-Current private review site: https://fluentcare-clinic-landing.ambula-healt-8265.chatgpt.site/
 
 ## Content notes
 

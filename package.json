@@ -1,0 +1,12 @@
+{
+  "name": "fluentcare-website",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build:content": "node scripts/build-content.mjs",
+    "preview:content": "node scripts/build-content.mjs --include-drafts",
+    "check:content": "node --test tests/content.test.mjs"
+  },
+  "devDependencies": { "marked": "17.0.5" }
+}
