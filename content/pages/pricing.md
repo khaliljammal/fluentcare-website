@@ -14,25 +14,27 @@
     "https://fluentcare.web.app/privacy-policy/",
     "https://fluentcare.web.app/terms/",
     "https://fluentcare.web.app/support/"
-  ]
+  ],
+  "presentation": {
+    "layout": "pricing",
+    "eyebrow": "Simple, shared clinic pricing",
+    "breadcrumb": "Pricing",
+    "plan": {
+      "monthly": 20,
+      "included_minutes": 80,
+      "overage": 0.3,
+      "trial": 10
+    }
+  }
 }
 ---
-FluentCare’s published terms describe one subscription per clinic, with minutes shared by its staff. Public app-store downloads are coming soon; confirm release availability before getting started.
-
-| Item | Published terms |
-| --- | --- |
-| Clinic subscription | $20 per month |
-| Included translation time | 80 shared minutes per billing period |
-| Additional usage | $0.30 per minute, measured by the second |
-| Eligible new clinic trial | 10 shared minutes |
-
-The allowance belongs to your clinic. It is not a separate free allowance for each staff member. Unused included minutes do not carry over, and applicable taxes may be added.
+One subscription for your clinic. Minutes shared by your staff. Confirm release availability before getting started.
 
 ## You control additional usage
 
 Additional usage is disabled until the clinic owner enables it and sets a spending limit. Manage continued access and usage settings in the clinic dashboard.
 
-An illustrative calculation: 10 extra minutes, if enabled and used, would cost $3 before applicable taxes. Your actual bill depends on measured usage and the current terms.
+Unused included minutes do not carry over. Your actual bill depends on measured usage, applicable taxes and the current terms.
 
 ## Check the current offer
 

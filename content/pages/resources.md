@@ -14,7 +14,12 @@
     "https://fluentcare.web.app/privacy-policy/",
     "https://fluentcare.web.app/terms/",
     "https://fluentcare.web.app/support/"
-  ]
+  ],
+  "presentation": {
+    "layout": "resources",
+    "eyebrow": "Small steps. Clearer conversations.",
+    "breadcrumb": "Resources"
+  }
 }
 ---
 Start with your clinic’s language-access workflow. A tool evaluation is one part of that process.

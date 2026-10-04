@@ -15,7 +15,13 @@
     "https://fluentcare.web.app/terms/",
     "https://fluentcare.web.app/support/",
     "https://www.ahrq.gov/health-literacy/improve/precautions/tool9.html"
-  ]
+  ],
+  "presentation": {
+    "layout": "guide",
+    "eyebrow": "Clinic workflow guide",
+    "breadcrumb": "Language barriers in healthcare",
+    "card_title": "A clearer conversation starts at the front desk."
+  }
 }
 ---
 A language-access workflow should help staff recognise a language need and reach the right support. Ask which language a person prefers to speak and read, record that preference, and make the interpreter process easy to find. AHRQ recommends these steps in its [Address Language Differences guidance](https://www.ahrq.gov/health-literacy/improve/precautions/tool9.html).

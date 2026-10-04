@@ -14,7 +14,12 @@
     "https://fluentcare.web.app/privacy-policy/",
     "https://fluentcare.web.app/terms/",
     "https://fluentcare.web.app/support/"
-  ]
+  ],
+  "presentation": {
+    "layout": "privacy",
+    "eyebrow": "Understand the details",
+    "breadcrumb": "Privacy"
+  }
 }
 ---
 FluentCare’s published privacy policy separates application storage from provider processing. Review both before evaluating the app. Healthcare/provider arrangements and clinical language evaluation are still being verified.

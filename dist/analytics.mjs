@@ -102,7 +102,7 @@ export function initialiseWebsite(window, document) {
     if (!link) return;
     const destination = new URL(link.href, window.location.href);
     if (destination.origin === 'https://www.fluentcare.io' && destination.pathname === '/get-started/') analytics.capture('get_started_clicked', {route_choice: 'availability'});
-    else if (destination.origin === 'https://fluentcare.web.app' && destination.pathname === '/support/') analytics.capture('get_started_clicked', {route_choice: 'availability'});
+    else if (destination.origin === 'https://fluentcare.web.app' && destination.pathname === '/support/') analytics.capture('get_started_clicked', {route_choice: ['clinic_owner','staff'].includes(link.dataset.routeChoice) ? link.dataset.routeChoice : 'availability'});
     else if (destination.origin === 'https://fluentcare.web.app' && destination.pathname === '/') analytics.capture('get_started_clicked', {route_choice: 'clinic_owner'});
   });
 }

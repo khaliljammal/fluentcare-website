@@ -14,7 +14,30 @@
     "https://fluentcare.web.app/privacy-policy/",
     "https://fluentcare.web.app/terms/",
     "https://fluentcare.web.app/support/"
-  ]
+  ],
+  "presentation": {
+    "layout": "onboarding",
+    "eyebrow": "A place for everyone on your team",
+    "breadcrumb": "Get started",
+    "choices": [
+      {
+        "icon": "Users",
+        "title": "I manage a clinic.",
+        "text": "Explore FluentCare for your team.",
+        "href": "https://fluentcare.web.app/support/",
+        "cta": "Ask about availability",
+        "route": "clinic_owner"
+      },
+      {
+        "icon": "UserRound",
+        "title": "I’m joining my clinic.",
+        "text": "Start with an invitation from your clinic owner.",
+        "href": "https://fluentcare.web.app/support/",
+        "cta": "Get help with access",
+        "route": "staff"
+      }
+    ]
+  }
 }
 ---
 FluentCare is organised around clinic accounts and individual staff logins. Public app-store downloads are coming soon. Choose the path that fits you.
@@ -23,13 +46,13 @@ FluentCare is organised around clinic accounts and individual staff logins. Publ
 
 [Contact us about availability](https://fluentcare.web.app/support/) to discuss the current release and evaluation requirements. Review the [medical translation app](/medical-translation-app/), [pricing](/pricing/) and [privacy](/privacy-and-security/) before deciding whether to proceed.
 
-Already have an owner account? [Open the clinic dashboard](https://fluentcare.web.app) to sign in. A link to the dashboard does not confirm that your clinic has been approved or that app downloads are available.
+Already have an owner account? [Open the clinic dashboard](https://fluentcare.web.app) to sign in. Confirm release access with the team before proceeding.
 
 ## I’m joining my clinic as a staff member
 
 Ask your clinic owner for your invitation and the download instructions for your clinic’s release. Use your own staff account. Your clinic’s translation minutes are shared across the team.
 
-We’ll add direct App Store and Google Play links here when public listings are verified. There is no public download link yet.
+Public App Store and Google Play downloads are coming soon.
 
 ## Before a release evaluation
 

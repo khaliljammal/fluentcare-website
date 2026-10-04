@@ -3,7 +3,7 @@
   "slug": "/medical-translation-app/",
   "title": "Medical Translation App for Clinic Teams | FluentCare",
   "description": "Explore FluentCare’s two-way voice translation, clinic team setup and current release status. Review the limits and contact us about app availability.",
-  "heading": "A medical translation app for routine clinic conversations.",
+  "heading": "Care in their language.\nA team on the same page.",
   "status": "published",
   "page_type": "product",
   "claims_verified": true,
@@ -14,12 +14,57 @@
     "https://fluentcare.web.app/privacy-policy/",
     "https://fluentcare.web.app/terms/",
     "https://fluentcare.web.app/support/"
-  ]
+  ],
+  "presentation": {
+    "layout": "product",
+    "eyebrow": "Care in their language",
+    "breadcrumb": "Product",
+    "primary_cta": {
+      "label": "Explore your next step",
+      "href": "/get-started/"
+    },
+    "features": [
+      {
+        "icon": "MessagesSquare",
+        "title": "Both sides of the conversation",
+        "text": "Spoken translation with optional captions."
+      },
+      {
+        "icon": "Users",
+        "title": "Built around your clinic",
+        "text": "Individual staff logins. Shared minutes."
+      },
+      {
+        "icon": "ShieldCheck",
+        "title": "Clear limits from the start",
+        "text": "Routine communication. Thoughtful evaluation."
+      }
+    ],
+    "steps": [
+      {
+        "icon": "Languages",
+        "title": "Choose the language",
+        "text": "Select the second language available in your release."
+      },
+      {
+        "icon": "Mic",
+        "title": "Take turns speaking",
+        "text": "Place the phone between you. Give each voice space."
+      },
+      {
+        "icon": "Headphones",
+        "title": "Listen to the reply",
+        "text": "Hear the translated response. Pause when something is unclear."
+      }
+    ]
+  }
 }
 ---
-FluentCare is a medical translation app built for clinic teams. It translates spoken conversations both ways, with optional on-screen captions. Clinic owners manage staff access and shared minutes.
+FluentCare is a medical translation app for routine clinic conversations. Two-way voice translation, optional captions and one shared clinic allowance.
 
-Public app-store downloads are coming soon. During release testing, use non-patient examples: provider arrangements and clinical language evaluation are still being verified. [Contact us about availability](https://fluentcare.web.app/support/).
+Public downloads are coming soon. Use non-patient examples during release testing while provider arrangements and language evaluation are verified.
+
+
 
 ## Speak, listen, then hear the reply
 
@@ -53,6 +98,3 @@ Audio is processed by OpenAI for translation. FluentCare’s published privacy p
 
 Application storage and provider retention are separate questions. Current provider settings and healthcare arrangements remain subject to verification. Read the [privacy and security explainer](/privacy-and-security/) and the linked policy before evaluating the app.
 
-## Find your next step
-
-[Get started](/get-started/) explains the owner and staff paths. If your clinic is evaluating FluentCare, contact the team about availability and the current release requirements. If you already belong to a clinic, ask your owner about your invitation and access.
