@@ -1,11 +1,3 @@
-// Add verified public App Store / Google Play URLs when downloads launch.
-const DOWNLOAD_LINKS = Object.freeze({ ios: '', android: '' });
-const dialog = document.querySelector('#download-dialog');
-document.querySelectorAll('[data-download]').forEach(button => button.addEventListener('click', () => dialog.showModal()));
-dialog.addEventListener('click', event => { if (event.target === dialog) { const bounds=dialog.getBoundingClientRect(); if(event.clientX<bounds.left||event.clientX>bounds.right||event.clientY<bounds.top||event.clientY>bounds.bottom) dialog.close(); } });
-const availableLinks=Object.entries(DOWNLOAD_LINKS).filter(([,url])=>url);
-if(availableLinks.length){document.querySelector('#download-title').textContent='Download FluentCare';dialog.querySelector('h2 + p').textContent='Choose your phone to get FluentCare.';availableLinks.forEach(([platform,url])=>{const link=document.createElement('a');link.className='button dark';link.href=url;link.textContent=platform==='ios'?'Download on the App Store':'Get it on Google Play';document.querySelector('#store-options').append(link);});}
-else{const options=document.querySelector('#store-options');options.className='store-coming';for(const label of ['App Store','Google Play']){const option=document.createElement('span');option.append(label);const note=document.createElement('small');note.textContent='Coming soon';option.append(note);options.append(option);}}
 const EXAMPLES = {
   welcome: { english: 'Hello. Do you have an appointment today?', spanish: 'Hola. ¿Tiene una cita hoy?', reply: 'Sí, a las diez de la mañana.', translation: 'Yes, at ten this morning.' },
   appointment: { english: 'Would Tuesday morning work for your next visit?', spanish: '¿Le vendría bien el martes por la mañana para su próxima visita?', reply: 'Sí, el martes por la mañana está bien.', translation: 'Yes, Tuesday morning works.' },

@@ -33,7 +33,13 @@ export function parsePage(text,filename){
   return {meta,html:marked.parser(tokens)};
 }
 export function renderPage(page,template,preview){
-  const {meta,html}=page;const values={TITLE:escapeHTML(meta.title),DESCRIPTION:escapeHTML(meta.description),HEADING:escapeHTML(meta.heading),PAGE_TYPE:escapeHTML(meta.page_type),CANONICAL:origin+meta.slug,ROBOTS:preview?'noindex,nofollow':'index,follow',BODY:html,PREVIEW:preview?'<div class="editorial-preview">Draft preview · publication review pending</div>':''};
+  const {meta,html}=page;
+  const crumbs=[{name:'Home',url:origin+'/'}];
+  if(meta.slug.startsWith('/resources/')&&meta.slug!=='/resources/')crumbs.push({name:'Resources',url:origin+'/resources/'});
+  crumbs.push({name:meta.heading,url:origin+meta.slug});
+  const breadcrumbs='<nav class="breadcrumbs" aria-label="Breadcrumb">'+crumbs.map((crumb,index)=>index===crumbs.length-1?'<span aria-current="page">'+escapeHTML(crumb.name)+'</span>':'<a href="'+escapeHTML(crumb.url)+'">'+escapeHTML(crumb.name)+'</a>').join('<span aria-hidden="true"> / </span>')+'</nav>';
+  const structuredData='<script type="application/ld+json">'+JSON.stringify({'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:crumbs.map((crumb,index)=>({'@type':'ListItem',position:index+1,name:crumb.name,item:crumb.url}))}).replace(/</g,'\\u003c')+'</script>';
+  const values={TITLE:escapeHTML(meta.title),DESCRIPTION:escapeHTML(meta.description),HEADING:escapeHTML(meta.heading),PAGE_TYPE:escapeHTML(meta.page_type),CANONICAL:origin+meta.slug,ROBOTS:preview?'noindex,nofollow':'index,follow',BODY:html,BREADCRUMBS:breadcrumbs,STRUCTURED_DATA:structuredData,PREVIEW:preview?'<div class="editorial-preview">Draft preview · publication review pending</div>':''};
   return template.replace(/\{\{([A-Z_]+)\}\}/g,(_,key)=>{if(!(key in values))throw new Error(`Unknown template field ${key}`);return values[key];});
 }
 export function sitemap(slugs){return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+slugs.map(slug=>`  <url><loc>${origin}${slug}</loc></url>`).join('\n')+'\n</urlset>\n';}

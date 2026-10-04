@@ -1,8 +1,8 @@
 # FluentCare website
 
-The download-focused FluentCare landing page for independent clinics and healthcare providers. Built with static HTML, CSS, and JavaScript, using FluentCare’s deep teal, warm white, mint, and yellow design system.
+The FluentCare marketing website for independent clinics and healthcare providers. Built with static HTML, CSS, and JavaScript, using FluentCare’s deep teal, warm white, mint, and yellow design system.
 
-Includes responsive layouts, visual product cards, an animated illustrative conversation, an interactive app walkthrough, privacy information, expandable FAQs, and app download options.
+Includes responsive layouts, visual product cards, an animated illustrative conversation, an interactive app walkthrough, privacy information, expandable FAQs, and explicit current-release next steps.
 
 ## Preview locally
 
@@ -18,7 +18,7 @@ Open http://localhost:4173. No installation or build step is needed.
 
 - `dist/index.html` — page content and accessible structure
 - `dist/styles.css` — brand styling, responsive layouts, and motion
-- `dist/app.js` — download options, conversation previews, and app walkthrough
+- `dist/app.js` — conversation previews and app walkthrough
 - `dist/clinic-conversation.jpg` — generated illustrative clinic photograph
 
 ## SEO and AI-authored content
@@ -42,13 +42,13 @@ Write pages in `content/pages/*.md`, using JSON front matter between `---` lines
 
 Read `content/COPY.md` before an AI writing run. Supply verified product evidence and a page brief privately; keep internal plans, analytics configuration and confidential review evidence out of this public repository. Use only an approved public summary in published pages.
 
-This SEO change does not install a marketing analytics SDK or change app capture settings.
+Website analytics uses explicit consent-controlled HTTP capture to the existing FluentCare PostHog project. `dist/analytics.mjs` permits fixed page/demo/CTA events on the production hostname only. It does not collect form contents, raw URLs, arbitrary referrers or conversation content; no SDK/autocapture/session replay/person profiles are enabled. App capture settings are unchanged. Read `DESIGN.md` and use the shared template for every new page.
 
 ## Add app download links
 
-Set the verified App Store and Google Play URLs in `DOWNLOAD_LINKS` at the top of `dist/app.js`. The download dialog automatically shows buttons for configured platforms.
+Add platform links to `/get-started/` only after the actual public listing URLs are verified. Extend the analytics event allowlist and payload tests before tracking store clicks. A store click is not a download.
 
-Once the app is available, also update the “coming soon” note near the final download button and the availability FAQ in `dist/index.html`.
+Once the app is available, update the release notes and availability wording on the homepage and supporting pages.
 
 ## Publish
 

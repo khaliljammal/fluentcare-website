@@ -2,11 +2,15 @@
   "name": "fluentcare-website",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build:content": "node scripts/build-content.mjs",
     "preview:content": "node scripts/build-content.mjs --include-drafts",
-    "check:content": "node --test tests/content.test.mjs"
+    "check:content": "node --test tests/*.test.mjs"
   },
-  "devDependencies": { "marked": "17.0.5" }
+  "devDependencies": {
+    "marked": "17.0.5"
+  }
 }

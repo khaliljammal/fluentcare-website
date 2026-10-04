@@ -36,3 +36,7 @@ Inputs: audience, practical question, owning URL, primary intent, verified facts
 Return concise Markdown, metadata, a claim/source record and unresolved questions. Keep missing facts in the review record rather than putting placeholders on a public page.
 
 Before publication, check that every section adds value, factual statements have evidence, links work, metadata is unique, the preview renders, and the review record is complete.
+
+## Design system
+
+Read `DESIGN.md` before drafting. Use the shared Markdown template, colors, font stack, buttons, navigation and footer. Do not create page-specific visual styles or inline HTML. Verify the shared stylesheets, one H1 and phone layout before review.
