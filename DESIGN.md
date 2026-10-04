@@ -4,7 +4,7 @@ Use this with `content/COPY.md` for every AI-authored page. The existing homepag
 
 ## Shared foundations
 
-`dist/styles.css` is the source of truth. Every page loads it before `dist/content.css`, which adds the reading layout without replacing the brand.
+`dist/styles.css` is the source of truth. Every page loads it before `dist/content.css`, which adds reviewed visual and reading layouts without replacing the brand.
 
 | Token | Value | Use |
 | --- | --- | --- |
@@ -23,8 +23,8 @@ Use tokens rather than adding a page-specific palette or font. Inter uses the ex
 ## Components and layouts
 
 - Shared brand mark, `.site-header`, `.nav`, `.site-footer`, `.eyebrow`, `.skip`, `.button`, `.button.small` and `.text-link` come from `styles.css`.
-- `templates/page.html` supplies metadata, shared navigation, footer and the single H1 for generated pages. Authors supply Markdown body content only.
-- Product and guide pages use `.content-page`: an 850px outer reading layout with a 700px body, 18px desktop text and 17px phone text. Headings scale for the reading layout while preserving the brand font, teal color and tight spacing.
+- `templates/page.html` supplies metadata, shared navigation and footer. The selected renderer supplies one H1; authors supply reviewed Markdown and presentation metadata.
+- Product and guide pages use the visual layouts described below. The `.content-page` fallback keeps an 850px outer reading layout. All layouts preserve the brand font, teal color and tight heading spacing.
 - Use paragraphs, descriptive links, H2/H3, lists and small comparison tables. No inline HTML, page-specific CSS, arbitrary images or a second H1 in Markdown.
 - Commercial pages have a real next-step link. Keep the yellow primary button style consistent with the homepage. Do not make unavailable store links look active.
 - Breadcrumbs use the same muted text and meaningful linked route names. A guide’s parent is Resources.
