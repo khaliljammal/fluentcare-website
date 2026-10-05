@@ -48,3 +48,7 @@ Read `DESIGN.md` and select an existing reviewed presentation layout. Start with
 ## Product-page editing rule
 
 Keep product pages concise: aim for roughly 250–400 main-content words, with short workflow steps and visual routine-use examples. This replaces the earlier 450–650-word product budget. Avoid paragraphs that merely describe another page; use a descriptive link when needed. The final call to action must name FluentCare, explain two-way voice translation for clinic teams and offer a real next step. Group essential usage/privacy details in a compact visual section with links to the full explanation. Do not pad content to reach a word target.
+
+## Page imagery
+
+Choose a unique editorial scene for each page that uses photography; do not recycle an image between the product, resource hub and guides. Use imagery to explain the page’s particular story. Use a short scene or workflow caption and descriptive alternative text. Do not add an AI-generated disclaimer to visible captions, per the user’s October 5 preference. Real app screenshots remain identified as real captures. Keep prompts and asset provenance in the private review record. Follow `DESIGN.md` and the reviewed image metadata; check the phone crop before review.

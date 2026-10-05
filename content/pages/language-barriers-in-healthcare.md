@@ -20,7 +20,15 @@
     "layout": "guide",
     "eyebrow": "Clinic workflow guide",
     "breadcrumb": "Language barriers in healthcare",
-    "card_title": "A clearer conversation starts at the front desk."
+    "card_title": "A clearer conversation starts at the front desk.",
+    "image": {
+      "src": "/assets/clinic-front-desk.jpg",
+      "alt": "Illustrative scene of a receptionist and adult visitor speaking at a welcoming clinic front desk",
+      "width": 1586,
+      "height": 992,
+      "generated": true
+    },
+    "image_caption": "A clearer conversation starts at the front desk."
   }
 }
 ---
