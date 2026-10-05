@@ -8,7 +8,7 @@
   "page_type": "product",
   "claims_verified": true,
   "cta_verified": true,
-  "reviewed_by": "Codex — evidence and working-link review; production release pending",
+  "reviewed_by": "Codex — public policy/link evidence and user-directed copy review",
   "reviewed_at": "2026-10-04",
   "sources": [
     "https://fluentcare.web.app/privacy-policy/",
@@ -56,45 +56,46 @@
         "title": "Listen to the reply",
         "text": "Hear the translated response. Pause when something is unclear."
       }
+    ],
+    "image_caption": "Made for the everyday conversations in your clinic.",
+    "routine_moments": [
+      {
+        "icon": "MessagesSquare",
+        "title": "A warm hello",
+        "text": "Greetings and everyday questions."
+      },
+      {
+        "icon": "ClipboardList",
+        "title": "A routine check-in",
+        "text": "Simple front-desk conversations."
+      },
+      {
+        "icon": "CalendarDays",
+        "title": "The next appointment",
+        "text": "Talking through a date or time."
+      }
     ]
   }
 }
 ---
 FluentCare is a medical translation app for routine clinic conversations. Two-way voice translation, optional captions and one shared clinic allowance.
 
-Public downloads are coming soon. Use non-patient examples during release testing while provider arrangements and language evaluation are verified.
-
-
-
 ## Speak, listen, then hear the reply
 
-The app is designed for English and a selected second language. Choose a language, place the phone between speakers and take turns. Hear the translated speech, then hear the other speaker’s reply in English.
-
-The [homepage walkthrough](/#how-it-works) illustrates this flow. It is a visual example, rather than a live translation session or an accuracy demonstration. Ask us about the languages available in the current release before evaluating a particular language pair.
+Choose a second language, place the phone between speakers and take turns. Hear the translated speech, then hear the other speaker’s reply in English.
 
 ## A team account, with shared minutes
 
-The clinic owner manages the team and subscription through the clinic dashboard. Staff use their own accounts and share the clinic’s allowance. This model is designed for staff use; patients do not need a FluentCare account to participate.
+Owners manage team access and the subscription. Staff sign in individually and share the clinic’s minutes. Patients do not need a FluentCare account.
 
-The [pricing page](/pricing/) explains the published clinic allowance and additional-usage terms. Your team should confirm release availability and eligibility before relying on an offer.
+## Know when to use an interpreter
 
-## Plan the workflow before introducing a tool
+AI can make mistakes. Use a qualified interpreter for consent, complex or high-stakes conversations, uncertainty, or whenever requested or required.
 
-Greetings, appointment scheduling and routine check-in are examples of the communication this product is designed to support. They are intended-use examples, rather than evidence that the app is ready for patient use in your setting.
-
-During evaluation, practise with invented details. For example, have two staff members take turns asking about a fictional appointment time. Check the pause and end controls, whether each person can hear the output, and what your team will do when a phrase is unclear.
-
-A demonstration cannot establish suitability for a patient conversation. Confirm the release requirements, your organisation’s policies, applicable provider arrangements and language evaluation before introducing patient information.
-
-## Know when to use a qualified interpreter
-
-AI translation can make mistakes. Use a qualified interpreter for informed consent, complex or high-stakes decisions, unresolved uncertainty, or whenever one is requested or required. FluentCare does not connect users to human interpreters or provide medical advice.
-
-If a conversation changes from scheduling to a clinical question, stop the tool and follow your clinic’s interpreter process. An initially simple conversation can become more consequential.
+FluentCare does not connect you to human interpreters or provide medical advice.
 
 ## Understand what happens to audio
 
-Audio is processed by OpenAI for translation. FluentCare’s published privacy policy says the application does not save conversation recordings or transcripts in its own storage. Account and usage information is retained to operate the service.
+OpenAI processes audio for translation. FluentCare does not save conversation recordings or transcripts in its own application storage. Account and usage records are retained to run the service.
 
-Application storage and provider retention are separate questions. Current provider settings and healthcare arrangements remain subject to verification. Read the [privacy and security explainer](/privacy-and-security/) and the linked policy before evaluating the app.
-
+Provider retention is separate. [Review privacy and data handling](/privacy-and-security/).
