@@ -60,3 +60,7 @@ The reviewed `presentation` front matter selects a reusable layout in `scripts/v
 Use real product captures to show interface details. Illustrative photos may be generated with ImageGen, should match the warm clinic palette and must never imply actual customers or product results. Store reviewed assets in `dist/assets/`, provide descriptive alt text and a generated-image caption where appropriate. Use Lucide icons from `dist/icons/` with the included license; do not invent decorative SVG artwork. Avoid decorative gradients and stock-photo posing.
 
 At phone widths, columns stack, navigation remains visible, text stays readable, and interactions work with touch and keyboard. Test the pricing math, disclosure control, table of contents, all internal links and all six responsive page layouts before release.
+
+## Product-page refinements
+
+Product pages use three compact routine-use cards and a small speech/translation/listening diagram beside concise interpreter and data-handling details. Keep essential facts readable without turning the page into long policy cards. Final CTA panels should explain the product and audience on their own, with a descriptive button. Product photo captions may describe the intended workflow rather than asset provenance; generated scenes remain documented in the private review record and illustrative alt text, without implying real customer evidence.

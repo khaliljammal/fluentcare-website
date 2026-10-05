@@ -11,7 +11,7 @@ Prefer “speak with patients” over “facilitate multilingual patient engagem
 ## Editing budgets
 
 - Homepage: about 300–450 main-body words.
-- Product page: about 450–650 words.
+- Product page: about 250–400 main-content words; prefer visual examples.
 - Get started: about 150–300 words.
 - Practical guide: usually 600–900 words.
 
@@ -44,3 +44,7 @@ Read `DESIGN.md` before drafting. Use the shared Markdown template, colors, font
 ## Tell the story visually
 
 Read `DESIGN.md` and select an existing reviewed presentation layout. Start with the clinic’s need, explain the product or workflow in short sections, and end with a real next step. Use concise headings, specific examples and a useful visual. Do not turn an article into a sales wall or hide evaluation limits. The component renderer owns headings, cards and images; Markdown supplies the reviewed explanatory content. New assets, component types and facts need review before publication. Never invent store downloads, customer testimonials, accuracy statistics or healthcare compliance claims.
+
+## Product-page editing rule
+
+Keep product pages concise: aim for roughly 250–400 main-content words, with short workflow steps and visual routine-use examples. This replaces the earlier 450–650-word product budget. Avoid paragraphs that merely describe another page; use a descriptive link when needed. The final call to action must name FluentCare, explain two-way voice translation for clinic teams and offer a real next step. Group essential usage/privacy details in a compact visual section with links to the full explanation. Do not pad content to reach a word target.
