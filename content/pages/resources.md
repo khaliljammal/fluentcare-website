@@ -21,7 +21,7 @@
     "breadcrumb": "Resources",
     "image": {
       "src": "/assets/resources-team-planning.jpg",
-      "alt": "AI-generated illustration of clinic colleagues planning a communication workflow together",
+      "alt": "Illustrative scene of clinic colleagues planning a communication workflow together",
       "width": 1200,
       "height": 800,
       "generated": true

@@ -40,7 +40,7 @@ function hero(page,crumbs,extra='',classes='') {
   const p=page.meta.presentation;const {introHTML}=sectionContent(page);
   return `<section class="page-hero ${classes}">${crumbs}<div class="hero-grid"><div class="page-hero-copy"><p class="eyebrow">${e(p.eyebrow||'For independent clinic teams')}</p><h1>${e(page.meta.heading)}</h1><div class="hero-lead">${introHTML}</div>${p.primary_cta?link(p.primary_cta.href,p.primary_cta.label,'button'):''}</div>${extra}</div></section>`;
 }
-const imageCaption=p=>[p.image.generated?'AI-generated illustration':'',p.image_caption||''].filter(Boolean).join(' · ');
+const imageCaption=p=>p.image_caption||'';
 const photo=p=>`<figure class="story-photo">${image(p.image.src,p.image.alt,p.image.width,p.image.height,true)}<figcaption>${e(imageCaption(p))}</figcaption></figure>`;
 function product(page,crumbs) {
   const p=page.meta.presentation,{sections}=sectionContent(page);

@@ -51,4 +51,4 @@ Keep product pages concise: aim for roughly 250–400 main-content words, with s
 
 ## Page imagery
 
-Choose a unique editorial scene for each page that uses photography; do not recycle an image between the product, resource hub and guides. Use imagery to explain the page’s particular story. Generated scenes have a short visible “AI-generated illustration” caption and descriptive alternative text. Real app screenshots remain identified as real captures. Keep prompts and asset provenance in the private review record. Follow `DESIGN.md` and the reviewed image metadata; check the phone crop before review.
+Choose a unique editorial scene for each page that uses photography; do not recycle an image between the product, resource hub and guides. Use imagery to explain the page’s particular story. Use a short scene or workflow caption and descriptive alternative text. Do not add an AI-generated disclaimer to visible captions, per the user’s October 5 preference. Real app screenshots remain identified as real captures. Keep prompts and asset provenance in the private review record. Follow `DESIGN.md` and the reviewed image metadata; check the phone crop before review.

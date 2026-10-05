@@ -77,7 +77,7 @@
     ],
     "image": {
       "src": "/assets/product-conversation.jpg",
-      "alt": "AI-generated illustration of a clinic staff member and visitor talking with a phone between them",
+      "alt": "Illustrative scene of a clinic staff member and visitor talking with a phone between them",
       "width": 1200,
       "height": 800,
       "generated": true

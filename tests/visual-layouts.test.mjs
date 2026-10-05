@@ -16,7 +16,7 @@ test('all six page layouts retain a single H1, local breadcrumbs and accessible 
  for(const page of pages){const html=renderPage(page,template,false,pages.filter(p=>p.meta.page_type==='guide'));assert.equal((html.match(/<h1>/g)||[]).length,1);assert.match(html,/href="\/">Home/);assert.match(html,/Product<\/a>/);assert.doesNotMatch(html,/\{\{PAGE_CONTENT\}\}/);}
  const illustrated=pages.filter(page=>page.meta.presentation.image);
  assert.equal(new Set(illustrated.map(page=>page.meta.presentation.image.src)).size,illustrated.length);
- for(const page of illustrated){const html=renderPage(page,template,false,pages.filter(p=>p.meta.page_type==='guide'));assert.match(html,/<figcaption>AI-generated illustration/);assert.ok(html.includes(page.meta.presentation.image.src));}
+ for(const page of illustrated){const html=renderPage(page,template,false,pages.filter(p=>p.meta.page_type==='guide'));assert.doesNotMatch(html,/<figcaption>AI-generated illustration/);assert.ok(html.includes('<figcaption>'+page.meta.presentation.image_caption+'</figcaption>'));assert.ok(html.includes(page.meta.presentation.image.src));}
  const malicious=structuredClone(pages[0]);malicious.meta.presentation.features[0].title='<script>alert(1)</script>';
  assert.match(renderPage(malicious,template,false),/&lt;script&gt;alert/);
 });
