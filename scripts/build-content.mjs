@@ -34,7 +34,15 @@ export function renderPage(page,template,preview,guides=[]){
   if(meta.slug.startsWith('/resources/')&&meta.slug!=='/resources/')crumbs.push({name:'Resources',url:origin+'/resources/'});
   crumbs.push({name:meta.presentation?.breadcrumb||meta.heading,url:origin+meta.slug});
   const breadcrumbs='<nav class="breadcrumbs" aria-label="Breadcrumb">'+crumbs.map((crumb,index)=>index===crumbs.length-1?'<span aria-current="page">'+escapeHTML(crumb.name)+'</span>':'<a href="'+escapeHTML(new URL(crumb.url).pathname)+'">'+escapeHTML(crumb.name)+'</a>').join('<span aria-hidden="true"> / </span>')+'</nav>';
-  const structuredData='<script type="application/ld+json">'+JSON.stringify({'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:crumbs.map((crumb,index)=>({'@type':'ListItem',position:index+1,name:crumb.name,item:crumb.url}))}).replace(/</g,'\\u003c')+'</script>';
+  const schema=[{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:crumbs.map((crumb,index)=>({'@type':'ListItem',position:index+1,name:crumb.name,item:crumb.url}))}];
+  if(meta.page_type==='guide')schema.push({
+    '@context':'https://schema.org','@type':'Article',
+    headline:meta.heading,description:meta.description,
+    mainEntityOfPage:origin+meta.slug,inLanguage:'en',
+    publisher:{'@type':'Organization',name:'FluentCare',url:origin+'/'},
+    ...(meta.presentation?.layout==='guide'?{image:origin+'/assets/clinic-front-desk.jpg'}:{})
+  });
+  const structuredData=schema.map(data=>'<script type="application/ld+json">'+JSON.stringify(data).replace(/</g,'\\u003c')+'</script>').join('');
   const values={TITLE:escapeHTML(meta.title),DESCRIPTION:escapeHTML(meta.description),HEADING:escapeHTML(meta.heading),PAGE_TYPE:escapeHTML(meta.page_type),CANONICAL:origin+meta.slug,ROBOTS:preview?'noindex,nofollow':'index,follow',BODY:html,PAGE_CONTENT:renderVisualPage(page,breadcrumbs,guides),BREADCRUMBS:breadcrumbs,STRUCTURED_DATA:structuredData,PREVIEW:preview?'<div class="editorial-preview">Draft preview · publication review pending</div>':''};
   return template.replace(/\{\{([A-Z_]+)\}\}/g,(_,key)=>{if(!(key in values))throw new Error(`Unknown template field ${key}`);return values[key];});
 }

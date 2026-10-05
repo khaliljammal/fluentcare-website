@@ -24,3 +24,27 @@ test('internal navigation rejects unpublished routes and missing fragments',()=>
 test('published Markdown cannot contain draft placeholders',()=>{
   assert.throws(()=>parsePage(source({status:'published',claims_verified:true,cta_verified:true,reviewed_by:'test-fixture',reviewed_at:'2026-10-04',sources:['fixture']},'TODO: Confirm this'),'placeholder.md'),/draft placeholder/);
 });
+test('guide structured data describes visible content without inventing author or dates',()=>{
+  const page=parsePage(source({page_type:'guide',slug:'/resources/clinic-workflow/',heading:'A clear clinic workflow',presentation:{layout:'guide'}}),'guide.md');
+  const output=renderPage(page,'{{STRUCTURED_DATA}}',false);
+  const schema=[...output.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(match=>JSON.parse(match[1]));
+  assert.equal(schema.length,2);
+  assert.equal(schema[0]['@type'],'BreadcrumbList');
+  const article=schema.find(item=>item['@type']==='Article');
+  assert.equal(article.headline,page.meta.heading);
+  assert.equal(article.description,page.meta.description);
+  assert.equal(article.mainEntityOfPage,'https://www.fluentcare.io/resources/clinic-workflow/');
+  assert.equal(article.image,'https://www.fluentcare.io/assets/clinic-front-desk.jpg');
+  for(const field of ['author','datePublished','dateModified','review','aggregateRating'])assert.equal(field in article,false);
+  const utility=renderPage(parsePage(source({page_type:'utility'}),'utility.md'),'{{STRUCTURED_DATA}}',false);
+  assert.doesNotMatch(utility,/"@type":"Article"/);
+});
+test('guide JSON cannot terminate its script through metadata',()=>{
+  const heading='Example </script><script>alert(1)</script>';
+  const output=renderPage(parsePage(source({page_type:'guide',heading}),'safe-guide.md'),'{{STRUCTURED_DATA}}',false);
+  assert.doesNotMatch(output,/<script>alert/);
+  const blocks=[...output.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+  assert.equal(blocks.length,2);
+  assert.equal(JSON.parse(blocks[1][1]).headline,heading);
+  assert.equal('image' in JSON.parse(blocks[1][1]),false);
+});
