@@ -25,7 +25,7 @@ test('published Markdown cannot contain draft placeholders',()=>{
   assert.throws(()=>parsePage(source({status:'published',claims_verified:true,cta_verified:true,reviewed_by:'test-fixture',reviewed_at:'2026-10-04',sources:['fixture']},'TODO: Confirm this'),'placeholder.md'),/draft placeholder/);
 });
 test('guide structured data describes visible content without inventing author or dates',()=>{
-  const page=parsePage(source({page_type:'guide',slug:'/resources/clinic-workflow/',heading:'A clear clinic workflow',presentation:{layout:'guide'}}),'guide.md');
+  const page=parsePage(source({page_type:'guide',slug:'/resources/clinic-workflow/',heading:'A clear clinic workflow',presentation:{layout:'guide',image:{src:'/assets/clinic-front-desk.jpg',alt:'An illustrative clinic scene',width:1586,height:992,generated:true}}}),'guide.md');
   const output=renderPage(page,'{{STRUCTURED_DATA}}',false);
   const schema=[...output.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(match=>JSON.parse(match[1]));
   assert.equal(schema.length,2);

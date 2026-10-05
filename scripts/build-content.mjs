@@ -2,6 +2,7 @@ import {marked} from 'marked';
 import {readFile,writeFile,readdir,mkdir,cp,rm} from 'node:fs/promises';
 import {resolve,dirname,join} from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {createHash} from 'node:crypto';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const origin='https://www.fluentcare.io';
@@ -40,7 +41,7 @@ export function renderPage(page,template,preview,guides=[]){
     headline:meta.heading,description:meta.description,
     mainEntityOfPage:origin+meta.slug,inLanguage:'en',
     publisher:{'@type':'Organization',name:'FluentCare',url:origin+'/'},
-    ...(meta.presentation?.layout==='guide'?{image:origin+'/assets/clinic-front-desk.jpg'}:{})
+    ...(meta.presentation?.image?{image:origin+meta.presentation.image.src}:{})
   });
   const structuredData=schema.map(data=>'<script type="application/ld+json">'+JSON.stringify(data).replace(/</g,'\\u003c')+'</script>').join('');
   const values={TITLE:escapeHTML(meta.title),DESCRIPTION:escapeHTML(meta.description),HEADING:escapeHTML(meta.heading),PAGE_TYPE:escapeHTML(meta.page_type),CANONICAL:origin+meta.slug,ROBOTS:preview?'noindex,nofollow':'index,follow',BODY:html,PAGE_CONTENT:renderVisualPage(page,breadcrumbs,guides),BREADCRUMBS:breadcrumbs,STRUCTURED_DATA:structuredData,PREVIEW:preview?'<div class="editorial-preview">Draft preview · publication review pending</div>':''};
@@ -66,6 +67,13 @@ export async function build({includeDrafts=false}={}){
   let prior=[];try{prior=JSON.parse(await readFile(join(dist,'content-manifest.json'),'utf8'));}catch(error){if(error.code!=='ENOENT')throw error;}
   if(!Array.isArray(prior)||prior.some(slug=>!/^\/[a-z0-9-]+(?:\/[a-z0-9-]+)*\/$/.test(slug)))throw new Error('Invalid generated-page manifest');
   const selected=pages.filter(p=>includeDrafts||p.meta.status==='published');
+  const imageOwners=new Map();
+  for(const page of selected){
+    const asset=page.meta.presentation?.image;if(!asset)continue;
+    const digest=createHash('sha256').update(await readFile(join(dist,asset.src.slice(1)))).digest('hex');
+    if(imageOwners.has(digest))throw new Error(`Repeated editorial image: ${page.meta.slug} and ${imageOwners.get(digest)}`);
+    imageOwners.set(digest,page.meta.slug);
+  }
   const guides=selected.filter(p=>p.meta.page_type==='guide'&&p.meta.status==='published');
   const documents=new Map([['/',await readFile(join(dist,'index.html'),'utf8')],...selected.map(page=>[page.meta.slug,renderPage(page,template,includeDrafts,guides)])]);
   // Stylesheets and canonical URLs aren't navigation. Check only actual page links.

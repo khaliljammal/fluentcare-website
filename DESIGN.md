@@ -63,4 +63,10 @@ At phone widths, columns stack, navigation remains visible, text stays readable,
 
 ## Product-page refinements
 
-Product pages use three compact routine-use cards and a small speech/translation/listening diagram beside concise interpreter and data-handling details. Keep essential facts readable without turning the page into long policy cards. Final CTA panels should explain the product and audience on their own, with a descriptive button. Product photo captions may describe the intended workflow rather than asset provenance; generated scenes remain documented in the private review record and illustrative alt text, without implying real customer evidence.
+Product pages use three compact routine-use cards and a small speech/translation/listening diagram beside concise interpreter and data-handling details. Keep essential facts readable without turning the page into long policy cards. Final CTA panels should explain the product and audience on their own, with a descriptive button. Product photo captions combine a short workflow description with “AI-generated illustration” for generated scenes. Keep provenance in the private review record and descriptive alternative text; do not imply real customer evidence.
+
+## Unique editorial imagery
+
+Each product, resource hub and guide owns a distinct reviewed editorial image through its presentation metadata. Choose a scene that explains that page’s question. Do not reuse the guide’s image as the Resources feature image or copy the product photo into another page. The build requires an image for these layouts, validates its local asset path, alternative text and dimensions, and rejects identical image bytes across owning pages.
+
+Generated imagery carries a concise visible “AI-generated illustration” caption, followed by a useful description of the scene. Record prompts and provenance privately. Preserve genuine product screenshots as real captures. Utility pages can tell their story with their existing purposeful diagrams, controls and library icons. Match the established palette, natural light, typography and rounded image treatment; never imply actual customers or clinical results.

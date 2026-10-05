@@ -57,7 +57,7 @@
         "text": "Hear the translated response. Pause when something is unclear."
       }
     ],
-    "image_caption": "Made for the everyday conversations in your clinic.",
+    "image_caption": "A phone between you. Space for both voices.",
     "routine_moments": [
       {
         "icon": "MessagesSquare",
@@ -74,7 +74,14 @@
         "title": "The next appointment",
         "text": "Talking through a date or time."
       }
-    ]
+    ],
+    "image": {
+      "src": "/assets/product-conversation.jpg",
+      "alt": "AI-generated illustration of a clinic staff member and visitor talking with a phone between them",
+      "width": 1200,
+      "height": 800,
+      "generated": true
+    }
   }
 }
 ---

@@ -18,7 +18,15 @@
   "presentation": {
     "layout": "resources",
     "eyebrow": "Small steps. Clearer conversations.",
-    "breadcrumb": "Resources"
+    "breadcrumb": "Resources",
+    "image": {
+      "src": "/assets/resources-team-planning.jpg",
+      "alt": "AI-generated illustration of clinic colleagues planning a communication workflow together",
+      "width": 1200,
+      "height": 800,
+      "generated": true
+    },
+    "image_caption": "A clearer workflow starts with your team."
   }
 }
 ---
