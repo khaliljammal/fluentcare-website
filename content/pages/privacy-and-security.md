@@ -8,8 +8,8 @@
   "page_type": "utility",
   "claims_verified": true,
   "cta_verified": true,
-  "reviewed_by": "Codex — evidence and working-link review; production release pending",
-  "reviewed_at": "2026-10-04",
+  "reviewed_by": "Codex — website journey implementation/payload review; production approval pending",
+  "reviewed_at": "2026-10-16",
   "sources": [
     "https://fluentcare.web.app/privacy-policy/",
     "https://fluentcare.web.app/terms/",
@@ -44,13 +44,15 @@ Public app-store downloads are coming soon. Ask the team about the current relea
 
 ## Optional website statistics
 
-If you choose “Allow” on this website, we send limited page and button statistics to PostHog in the US. We use a random identifier for this browser tab and fixed categories for the page, referral source and button action.
+If you choose “Allow”, we send website journey statistics to PostHog in the US: public pages visited, traffic-source categories, referring-site domain groups, recognised platforms, approved campaign labels, button destinations and placements, sections viewed, scroll milestones and approximate active time. We also record broad browser and device categories.
 
-We do not send form contents, raw page URLs or query strings, conversation content, staff identifiers or clinic identifiers. We do not enable website session recordings, person profiles or automatic interaction capture. Like other network services, PostHog receives connection information such as your IP address and browser information.
+A random identifier is stored in this browser for up to 30 days. It helps connect visits in the same browser; clearing storage or switching devices breaks that continuity. Visits are grouped per tab, restarting after 30 minutes without a tracked action or after 24 hours. The first source we observe after permission and each visit’s entry page travel with later actions.
 
-Choosing “No thanks”, enabling Global Privacy Control or sending a Do Not Track preference prevents this website capture. Use “Analytics choices” in the footer to change your choice. Without permission, the website does not send these analytics events.
+We send only known public page addresses, without query strings, and fixed interaction labels. We do not send form contents, raw referrer addresses or subdomains, arbitrary UTM text, conversation content, staff or clinic identifiers. We do not enable session recordings or person profiles. Like other network services, PostHog receives connection information such as your IP address and browser information.
 
-This website setup is separate from the app’s release status and analytics configuration. It does not establish that production app events are being delivered.
+Use “Analytics choices” in the footer to change your choice. “No thanks”, Global Privacy Control and Do Not Track stop capture and remove stored journey identifiers. This does not erase statistics already received. Previous permission for the simpler tracking does not enable this expanded version; we ask again. Without permission, these events are not sent.
+
+This setup measures the public website. A dashboard, support or download-link click is not proof of signup, a stored request, an app download or a translation session. App analytics remains separate.
 
 ## Ask before you evaluate
 

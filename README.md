@@ -42,7 +42,11 @@ Write pages in `content/pages/*.md`, using JSON front matter between `---` lines
 
 Read `content/COPY.md` before an AI writing run. Supply verified product evidence and a page brief privately; keep internal plans, analytics configuration and confidential review evidence out of this public repository. Use only an approved public summary in published pages.
 
-Website analytics uses explicit consent-controlled HTTP capture to the existing FluentCare PostHog project. `dist/analytics.mjs` permits fixed page/demo/CTA events on the production hostname only. It does not collect form contents, raw URLs, arbitrary referrers or conversation content; no SDK/autocapture/session replay/person profiles are enabled. App capture settings are unchanged. Read `DESIGN.md` and use the shared template for every new page.
+Website analytics uses consent-controlled HTTP capture to the existing FluentCare PostHog project. The v2 journey contract in `dist/analytics.mjs` records safe page paths, site-level referrer groups and named traffic-source/campaign categories, session/page order, link destinations and placements, selected controls, section/scroll milestones and engagement snapshots. It preserves legacy page/demo/CTA events and adds sanitized native `$pageview`/`$pageleave` events. Never sum native and legacy views together.
+
+Expanded capture requires fresh v2 opt-in; previous declines remain respected. A random browser ID has a fixed 30-day expiry. Sessions are tab-scoped with a 30-minute idle timeout and a 24-hour maximum. IDs and attribution are removed on withdrawal/GPC/DNT. App identity, form values, raw query strings/referrers, arbitrary DOM text, replay and person profiles are excluded. Previews, unknown routes and the authenticated app never capture through this module.
+
+Campaign tags must be registered in `CAMPAIGNS`; unrecognised values are grouped and discarded. Mark controlled production QA with `fc_test=1`, which sends only a fixed `traffic_type=test` label. This is not a spending cap or a reliable human/bot classifier. Section indexes and click placement indexes refer to the reviewed rendered page structure. Engagement snapshots are cumulative per `page_view_id`: take their maximum, not their sum. At most 200 analytics events are emitted per document. Pageleave is best effort. See the private implementation review for verified coverage and release evidence.
 
 ## Add app download links
 
