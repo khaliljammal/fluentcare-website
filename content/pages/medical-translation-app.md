@@ -9,7 +9,7 @@
   "claims_verified": true,
   "cta_verified": true,
   "reviewed_by": "Codex — public policy/link evidence and user-directed copy review",
-  "reviewed_at": "2026-10-04",
+  "reviewed_at": "2026-10-18",
   "sources": [
     "https://fluentcare.web.app/privacy-policy/",
     "https://fluentcare.web.app/terms/",
@@ -106,3 +106,7 @@ FluentCare does not connect you to human interpreters or provide medical advice.
 OpenAI processes audio for translation. FluentCare does not save conversation recordings or transcripts in its own application storage. Account and usage records are retained to run the service.
 
 Provider retention is separate. [Review privacy and data handling](/privacy-and-security/).
+
+## Explore your clinic’s workflow
+
+See [FluentCare for clinic front desks](/for-clinic-front-desks/) for a fictional scheduling exercise, or use the [healthcare translation app evaluation guide](/resources/translation-apps-for-healthcare/) to compare access, data handling and buying questions.
