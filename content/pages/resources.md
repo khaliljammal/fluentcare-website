@@ -8,8 +8,8 @@
   "page_type": "utility",
   "claims_verified": true,
   "cta_verified": true,
-  "reviewed_by": "Codex — evidence and working-link review; production release pending",
-  "reviewed_at": "2026-10-04",
+  "reviewed_by": "Codex — AI editorial and navigation review; proposed update not published",
+  "reviewed_at": "2026-11-02",
   "sources": [
     "https://fluentcare.web.app/privacy-policy/",
     "https://fluentcare.web.app/terms/",
@@ -30,14 +30,16 @@
   }
 }
 ---
-Start with your clinic’s language-access workflow. A tool evaluation is one part of that process.
+Plan your clinic’s language access, then explore the role of translation tools. Start with a practical workflow or choose a guide for your team’s next question.
 
-## Plan for language differences
+## Start with a language-access workflow
 
-[Language barriers in healthcare: a practical clinic workflow](/resources/language-barriers-in-healthcare/) covers preferred language, interpreter access and a simple front-desk scenario.
+[Plan for language barriers in healthcare](/resources/language-barriers-in-healthcare/) with preferred language, interpreter access and a fictional front-desk scenario.
 
-## Evaluate FluentCare
+## Choose a tool-evaluation guide
 
-Read about the [medical translation app](/medical-translation-app/), review [privacy and current release limits](/privacy-and-security/), or choose your [next step](/get-started/).
+[Compare translation apps for healthcare](/resources/translation-apps-for-healthcare/) or [explore AI medical translation](/resources/ai-medical-translator/), including a fictional staff exercise and the limits of a tool evaluation.
 
-More guides will appear here as they are reviewed. We publish useful pages rather than empty topic cards.
+## Explore FluentCare
+
+See the [medical translation app](/medical-translation-app/), [published pricing](/pricing/) and [privacy and current release requirements](/privacy-and-security/). Then choose your [next step](/get-started/).
