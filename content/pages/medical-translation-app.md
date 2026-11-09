@@ -2,14 +2,14 @@
 {
   "slug": "/medical-translation-app/",
   "title": "Medical Translation App for Clinic Teams | FluentCare",
-  "description": "Explore FluentCare’s two-way voice translation, clinic team setup and current release status. Review the limits and contact us about app availability.",
+  "description": "Explore FluentCare’s two-way voice translation for routine clinic conversations, with optional captions and shared staff minutes. Review current release limits.",
   "heading": "Care in their language.\nA team on the same page.",
   "status": "published",
   "page_type": "product",
   "claims_verified": true,
   "cta_verified": true,
-  "reviewed_by": "Codex — public policy/link evidence and user-directed copy review",
-  "reviewed_at": "2026-10-18",
+  "reviewed_by": "Codex — existing product facts and October 21 editorial review; publication pending",
+  "reviewed_at": "2026-10-21",
   "sources": [
     "https://fluentcare.web.app/privacy-policy/",
     "https://fluentcare.web.app/terms/",
@@ -87,9 +87,11 @@
 ---
 FluentCare is a medical translation app for routine clinic conversations. Two-way voice translation, optional captions and one shared clinic allowance.
 
-## Speak, listen, then hear the reply
+## Two-way voice translation for clinic conversations
 
 Choose a second language, place the phone between speakers and take turns. Hear the translated speech, then hear the other speaker’s reply in English.
+
+If you’re evaluating a medical conversation translator, start with a fictional staff exchange. One colleague asks about an invented appointment time; the other replies. Check whether both can follow the controls and hear the audio. This demonstrates the workflow, not translation accuracy. Use non-patient information during release testing.
 
 ## A team account, with shared minutes
 
