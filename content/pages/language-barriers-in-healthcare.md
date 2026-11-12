@@ -66,7 +66,7 @@ Keep the distinction clear in your tool evaluation. A voice app demonstration do
 
 ## Evaluate a tool with a narrow question
 
-Decide what question an evaluation should answer. For a release test, that might be whether two staff members can find the pause control or hear the audio in a typical reception area. Use invented details and write down what was observed.
+Start with a [fictional staff exercise](/resources/ai-medical-translator/#try-a-fictional-staff-conversation) and one narrow question. For a release test, that might be whether two staff members can find the pause control or hear the audio in a typical reception area. Use invented details and write down what was observed.
 
 Do not turn a successful demonstration into a claim of clinical accuracy. A tool may feel easy to use while still needing language evaluation, provider agreements or a different escalation process.
 

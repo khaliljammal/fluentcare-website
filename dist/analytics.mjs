@@ -11,6 +11,7 @@ export const PAGES=Object.freeze({
  '/resources/language-barriers-in-healthcare/':['language_barriers_healthcare','guide'],
  '/resources/ai-medical-translator/':['ai_medical_translator','guide'],
  '/resources/translation-apps-for-healthcare/':['translation_apps_healthcare','guide'],
+ '/resources/language-barriers-in-nursing/':['language_barriers_nursing','guide'],
  '/for-clinic-front-desks/':['clinic_front_desks','use_case']
 });
 const PAGE_KEYS=new Set(Object.values(PAGES).map(p=>p[0]));
