@@ -1,5 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {mkdtemp,mkdir,writeFile,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
 import {parsePage,renderPage,sitemap,validatePageLinks} from '../scripts/build-content.mjs';
 const meta={slug:'/medical-translation-app/',title:'A useful app',description:'A concise description',heading:'Routine conversations',status:'draft',page_type:'product'};
 const source=(changes={},body='## How it works\n\nRead the [walkthrough](/#how-it-works).')=>'---\n'+JSON.stringify({...meta,...changes})+'\n---\n'+body;
@@ -20,6 +23,17 @@ test('internal navigation rejects unpublished routes and missing fragments',()=>
   assert.throws(()=>validatePageLinks(new Map([['/','<a href="/draft/">Draft</a>']])),/broken internal route/);
   assert.throws(()=>validatePageLinks(new Map([['/','<a href="/#missing">Section</a>']])),/missing fragment/);
   validatePageLinks(new Map([['/','<section id="demo"></section><a href="/#demo">Demo</a>']]));
+});
+test('a served pdf can be linked and a missing file cannot',async()=>{
+  const root=await mkdtemp(join(tmpdir(),'fc-downloads-'));
+  try{
+    await mkdir(join(root,'assets','downloads'),{recursive:true});
+    await writeFile(join(root,'assets','downloads','dental-spanish-cheat-sheet.pdf'),'%PDF-1.7\n');
+    const page=new Map([['/resources/dental-spanish-phrases/','<a class="button" href="/assets/downloads/dental-spanish-cheat-sheet.pdf" download>Download</a>']]);
+    validatePageLinks(page,{fileRoot:root});
+    assert.throws(()=>validatePageLinks(new Map([['/','<a href="/assets/downloads/missing.pdf">Missing</a>']]),{fileRoot:root}),/missing download/);
+    assert.throws(()=>validatePageLinks(new Map([['/','<a href="/assets/secret.pdf">No</a>']]),{fileRoot:root}),/broken internal route/);
+  }finally{await rm(root,{recursive:true,force:true});}
 });
 test('published Markdown cannot contain draft placeholders',()=>{
   assert.throws(()=>parsePage(source({status:'published',claims_verified:true,cta_verified:true,reviewed_by:'test-fixture',reviewed_at:'2026-10-04',sources:['fixture']},'TODO: Confirm this'),'placeholder.md'),/draft placeholder/);

@@ -20,6 +20,28 @@ test('all six page layouts retain a single H1, local breadcrumbs and accessible 
  const malicious=structuredClone(pages[0]);malicious.meta.presentation.features[0].title='<script>alert(1)</script>';
  assert.match(renderPage(malicious,template,false),/&lt;script&gt;alert/);
 });
+test('guide contents number sections 10 and above without an extra zero and offer a direct pdf download',()=>{
+  const headings=Array.from({length:12},(_,index)=>`## Section ${index+1}\n\nText.`).join('\n\n');
+  const meta={slug:'/resources/many-sections/',title:'A long guide',description:'A concise description',heading:'Many sections',status:'draft',page_type:'guide',presentation:{layout:'guide',image:{src:'/assets/clinic-front-desk.jpg',alt:'An illustrative clinic scene',width:1200,height:800,generated:true}}};
+  const body=`${headings}\n\n[Download the cheat sheet (PDF)](/assets/downloads/dental-spanish-cheat-sheet.pdf)\n`;
+  const page=parsePage('---\n'+JSON.stringify(meta)+'\n---\n'+body,'guide.md');
+  const html=renderPage(page,'{{PAGE_CONTENT}}',false);
+  assert.match(html,/<span>09<\/span>/);assert.match(html,/<span>10<\/span>/);assert.match(html,/<span>12<\/span>/);assert.doesNotMatch(html,/<span>010<\/span>/);
+  assert.match(html,/<a class="button" href="\/assets\/downloads\/dental-spanish-cheat-sheet\.pdf" download>Download the cheat sheet \(PDF\)<img class="component-icon" src="\/icons\/ArrowUpRight\.svg"/);
+});
+test('phrase tables become cards and other tables stay tables',()=>{
+  const body=['## Greeting and check-in','','Greet the person, then confirm the visit.','','| English | Spanish | Say it |','| --- | --- | --- |','| Good morning. | Buenos días. | BWEH-nohs DEE-ahs |','| Do you have an appointment? | ¿Tiene cita? | TYEH-neh SEE-tah |','','> Ask how the name should be recorded.','','## Compare options','','| Option | Ask |','| --- | --- |','| Voice | Hear both replies? |'].join('\n');
+  const meta={slug:'/resources/many-sections/',title:'A long guide',description:'A concise description',heading:'Many sections',status:'draft',page_type:'guide',presentation:{layout:'guide',image:{src:'/assets/clinic-front-desk.jpg',alt:'An illustrative clinic scene',width:1200,height:800,generated:true}}};
+  const html=renderPage(parsePage('---\n'+JSON.stringify(meta)+'\n---\n'+body,'guide.md'),'{{PAGE_CONTENT}}',false);
+  assert.match(html,/<ul class="phrase-grid"><li class="phrase-card"><p class="phrase-en">Good morning\.<\/p><p class="phrase-es" lang="es">Buenos días\.<\/p><p class="phrase-say">BWEH-nohs DEE-ahs<\/p><\/li>/);
+  assert.match(html,/lang="es">¿Tiene cita\?<\/p>/);
+  assert.match(html,/<blockquote>/);
+  assert.match(html,/<span class="icon-tile">/);
+  assert.match(html,/<span class="label-pill">01<\/span>/);
+  assert.match(html,/<table>[\s\S]*<th>Option<\/th>/);
+  assert.doesNotMatch(html,/<th>English<\/th>/);
+  assert.doesNotMatch(html,/scenario-card/);
+});
 test('usage example charges only extra minutes and never mutates an account',async()=>{
  const outputs={};const input={value:'80',min:'0',max:'200',style:{setProperty(){}},addEventListener(_,fn){this.update=fn;}};
  const calculator={dataset:{monthly:'20',included:'80',overage:'.3'},querySelector(selector){return selector.startsWith('input')?input:outputs[selector]??= {textContent:''};}};

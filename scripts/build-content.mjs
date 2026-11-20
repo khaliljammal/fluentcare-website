@@ -1,5 +1,6 @@
 import {marked} from 'marked';
 import {readFile,writeFile,readdir,mkdir,cp,rm} from 'node:fs/promises';
+import {existsSync} from 'node:fs';
 import {resolve,dirname,join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
@@ -48,11 +49,17 @@ export function renderPage(page,template,preview,guides=[]){
   return template.replace(/\{\{([A-Z_]+)\}\}/g,(_,key)=>{if(!(key in values))throw new Error(`Unknown template field ${key}`);return values[key];});
 }
 export function sitemap(slugs){return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+slugs.map(slug=>`  <url><loc>${origin}${slug}</loc></url>`).join('\n')+'\n</urlset>\n';}
-export function validatePageLinks(documents){
+const downloadPath=/^\/assets\/downloads\/[a-z0-9-]+\.pdf$/;
+export function validatePageLinks(documents,{fileRoot}={}){
   for(const [slug,html] of documents){
     for(const match of html.matchAll(/href="([^"]+)"/g)){
       const href=match[1].replace(/&amp;/g,'&');const url=new URL(href,origin+slug);
       if(url.origin!==origin)continue;
+      if(downloadPath.test(url.pathname)){
+        const file=fileRoot&&join(fileRoot,url.pathname.slice(1));
+        if(!file||!existsSync(file))throw new Error(`${slug}: missing download ${url.pathname}`);
+        continue;
+      }
       if(!documents.has(url.pathname))throw new Error(`${slug}: unpublished or broken internal route ${url.pathname}`);
       if(url.hash){const id=decodeURIComponent(url.hash.slice(1));if(![...documents.get(url.pathname).matchAll(/id="([^"]+)"/g)].some(m=>m[1]===id))throw new Error(`${slug}: missing fragment ${url.hash}`);}
     }
@@ -77,7 +84,7 @@ export async function build({includeDrafts=false}={}){
   const guides=selected.filter(p=>p.meta.page_type==='guide'&&p.meta.status==='published');
   const documents=new Map([['/',await readFile(join(dist,'index.html'),'utf8')],...selected.map(page=>[page.meta.slug,renderPage(page,template,includeDrafts,guides)])]);
   // Stylesheets and canonical URLs aren't navigation. Check only actual page links.
-  validatePageLinks(new Map([...documents].map(([slug,html])=>[slug,html.replace(/<head>[\s\S]*?<\/head>/,'')])));
+  validatePageLinks(new Map([...documents].map(([slug,html])=>[slug,html.replace(/<head>[\s\S]*?<\/head>/,'')])),{fileRoot:dist});
   if(includeDrafts){await rm(output,{recursive:true,force:true});await cp(dist,output,{recursive:true});}
   for(const slug of prior)await rm(join(output,slug.slice(1)),{recursive:true,force:true});
   for(const page of selected){const directory=join(output,page.meta.slug.slice(1));await mkdir(directory,{recursive:true});await writeFile(join(directory,'index.html'),renderPage(page,template,includeDrafts,guides));}
