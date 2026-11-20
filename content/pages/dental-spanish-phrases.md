@@ -39,7 +39,7 @@ The phrases use neutral Latin American Spanish and the formal *usted*, which is 
 
 ## Greeting and check-in
 
-Start warmly, then confirm the basics. Asking which language a person prefers early saves everyone time later.
+Greet the person, then confirm the visit and the language they prefer.
 
 | English | Spanish | Say it |
 | --- | --- | --- |
@@ -53,11 +53,11 @@ Start warmly, then confirm the basics. Asking which language a person prefers ea
 | We can offer you an interpreter at no cost. | Le podemos ofrecer un intérprete sin costo. | leh poh-DEH-mohs oh-freh-SEHR oon een-TEHR-preh-teh seen KOHS-toh |
 | Please have a seat. | Por favor, tome asiento. | por fah-VOR, TOH-meh ah-SYEHN-toh |
 
-Many Spanish speakers have two surnames: the father's first, then the mother's. For María López García, *López* is usually the main surname. Ask how the person prefers their name recorded, and keep it consistent across insurance, forms and reminders.
+> Many people use two surnames. Ask how the name should be recorded, and keep it the same on insurance, forms and reminders.
 
 ## Insurance and forms
 
-Keep each request to one item. Point to the card or the line on the form as you speak.
+Ask for one thing at a time, and point to the card or the line.
 
 | English | Spanish | Say it |
 | --- | --- | --- |
@@ -68,11 +68,11 @@ Keep each request to one item. Point to the card or the line on the form as you 
 | Has your address or phone number changed? | ¿Ha cambiado su dirección o su número de teléfono? | ah kahm-BYAH-doh soo dee-rehk-SYOHN oh soo NOO-meh-roh deh teh-LEH-foh-noh |
 | The dental team will review your health history with you. | El equipo dental revisará su historial médico con usted. | ehl eh-KEE-poh dehn-TAHL reh-vee-sah-RAH soo ees-toh-RYAHL MEH-dee-koh kohn oos-TEHD |
 
-Hand over forms that have already been translated by a qualified translator where you have them. Health history questions belong with the clinical team, with language support arranged.
+> Use a qualified translation for forms when you have one. Health history stays with the clinical team.
 
 ## Scheduling and reminders
 
-Dates and times are where small mistakes cost the most. Say the day of the week, the date and the time, then ask the patient to repeat it back.
+Say the weekday, the date and the time, then ask them to repeat it.
 
 | English | Spanish | Say it |
 | --- | --- | --- |
@@ -84,11 +84,11 @@ Dates and times are where small mistakes cost the most. Say the day of the week,
 | We will send you a text message reminder. | Le enviaremos un recordatorio por mensaje de texto. | leh ehn-vyah-REH-mohs oon reh-kor-dah-TOH-ryoh por mehn-SAH-heh deh TEHKS-toh |
 | If you need to cancel or change, please call us 24 hours ahead. | Si necesita cancelar o cambiar su cita, llámenos con 24 horas de anticipación. | see neh-seh-SEE-tah kahn-seh-LAR oh kahm-BYAR soo SEE-tah, YAH-meh-nohs kohn VEYN-tee-KWAH-troh OH-rahs deh ahn-tee-see-pah-SYOHN |
 
-Write the date on the appointment card as well, with the month spelled out: *martes, 3 de marzo*. Many Spanish speakers read 3/4 as 3 April, not March 4.
+> Spell the month in words. Many readers take 3/4 as 3 April, not March 4.
 
 ## Costs and payment
 
-Money questions are common and stressful. Use the actual amount, show it on paper or screen, and swap in your own payment options.
+Say the amount, show it, and use your own payment options.
 
 | English | Spanish | Say it |
 | --- | --- | --- |
@@ -99,11 +99,11 @@ Money questions are common and stressful. Use the actual amount, show it on pape
 | We accept cash, cards and payment plans. | Aceptamos efectivo, tarjeta y planes de pago. | ah-sehp-TAH-mohs eh-fehk-TEE-voh, tar-HEH-tah ee PLAH-nehs deh PAH-goh |
 | Here is your receipt. | Aquí tiene su recibo. | ah-KEE TYEH-neh soo reh-SEE-boh |
 
-Handing over an estimate is routine. Explaining what a treatment involves, or asking someone to sign a payment agreement, needs fuller language support.
+> An estimate is routine. Treatment explanations and payment agreements need fuller language support.
 
 ## While patients wait
 
-Small courtesies go a long way when someone can't easily ask what's happening.
+Offer a short courtesy while someone waits.
 
 | English | Spanish | Say it |
 | --- | --- | --- |
@@ -117,7 +117,7 @@ Small courtesies go a long way when someone can't easily ask what's happening.
 
 ## After the visit
 
-Keep checkout to logistics: the next visit, the paperwork and who to call. Aftercare and medication instructions come from the clinical team, in language the patient understands.
+Keep checkout to the next visit, the paperwork and who to call.
 
 | English | Spanish | Say it |
 | --- | --- | --- |
@@ -127,11 +127,11 @@ Keep checkout to logistics: the next visit, the paperwork and who to call. After
 | If you have questions after your visit, call this number. | Si tiene preguntas después de su visita, llame a este número. | see TYEH-neh preh-GOON-tahs dehs-PWEHS deh soo vee-SEE-tah, YAH-meh ah EHS-teh NOO-meh-roh |
 | Have a nice day. | Que tenga un buen día. | keh TEHN-gah oon BWEHN DEE-ah |
 
-If the patient has a question about pain, bleeding, medication or their treatment, don't answer it from a phrase sheet. Bring in the clinical team and arrange language support.
+> Pain, bleeding, medication or treatment questions go to the clinical team, with language support.
 
 ## On the phone
 
-Phone calls are harder than face-to-face: no gestures, no paper to point at. Slow down, confirm details twice and transfer early.
+Slow down, confirm the details twice, and transfer early.
 
 | English | Spanish | Say it |
 | --- | --- | --- |
@@ -182,7 +182,7 @@ Agree your interpreter route before you need it: who to call, how to connect, an
 
 ## Printable cheat sheet
 
-Print this table and keep it by the front-desk phone. It covers the moments that come up most. The same phrases are on a two-page sheet you can print directly.
+The same phrases, ready to print and keep by the phone.
 
 [Download the cheat sheet (PDF)](/assets/downloads/dental-spanish-cheat-sheet.pdf)
 
