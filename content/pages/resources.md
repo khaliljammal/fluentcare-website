@@ -30,7 +30,7 @@
   }
 }
 ---
-Plan your clinic’s language access, then explore the role of translation tools. Start with a practical workflow or choose a guide for your team’s next question.
+Plan your clinic’s language access, then explore the role of translation tools. Start with a practical workflow or choose a guide for your team’s next question. Dental front desks can use [Spanish phrases for check-in and scheduling](/resources/dental-spanish-phrases/).
 
 ## Start with a language-access workflow
 

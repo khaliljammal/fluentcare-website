@@ -34,7 +34,10 @@ export function sectionContent(page) {
   }
   return {introHTML:marked.parser(intro),sections:sections.map(s=>({...s,html:marked.parser(s.tokens)}))};
 }
-const section=(s,classes='')=>`<section class="story-section ${classes}" id="${e(s.id)}"><h2>${e(s.title)}</h2><div class="story-copy">${s.html}</div></section>`;
+const section=(s,classes='')=>{
+  const html=s.html.replace(/<p><a href="(\/assets\/downloads\/[a-z0-9-]+\.pdf)">([\s\S]*?)<\/a><\/p>/g,(_,href,label)=>link(href,label.replace(/<[^>]+>/g,''),'button').replace(`href="${e(href)}"`,`href="${e(href)}" download`));
+  return `<section class="story-section ${classes}" id="${e(s.id)}"><h2>${e(s.title)}</h2><div class="story-copy">${html}</div></section>`;
+};
 const ctaBand=(title,copy,href='/get-started/',label='Find your next step',eyebrow='Let’s talk about your clinic')=>`<section class="next-step"><div><p class="eyebrow">${e(eyebrow)}</p><h2>${e(title)}</h2><p>${e(copy)}</p></div>${link(href,label,'button')}</section>`;
 function hero(page,crumbs,extra='',classes='') {
   const p=page.meta.presentation;const {introHTML}=sectionContent(page);
@@ -79,7 +82,7 @@ function resources(page,crumbs,guides){
 }
 function guide(page,crumbs){
  const {introHTML,sections}=sectionContent(page);const p=page.meta.presentation;
- const toc=sections.map((s,i)=>`<a href="#${e(s.id)}"><span>0${i+1}</span>${e(s.title)}</a>`).join('');
+ const toc=sections.map((s,i)=>`<a href="#${e(s.id)}"><span>${String(i+1).padStart(2,'0')}</span>${e(s.title)}</a>`).join('');
  const content=sections.map((s,i)=>section(s,i===0?'scenario-card':'')).join('');
  return `<article class="visual-page guide-page"><header class="guide-heading">${crumbs}<p class="eyebrow">${e(p.eyebrow||'Clinic workflow guide')}</p><h1>${e(page.meta.heading)}</h1><div class="guide-meta"><span>FluentCare resources</span><span>${Math.max(1,Math.ceil(page.body.split(/\s+/).length/200))} min read</span><span>Practical clinic workflows</span></div></header>${photo(p)}<div class="guide-grid"><aside class="guide-sidebar"><p class="eyebrow">In this guide</p><nav aria-label="Article sections">${toc}</nav><div class="sidebar-note">${icon('BookOpen')}<p>An illustrative workflow.<br>Follow your clinic’s approved policies.</p></div></aside><div class="guide-content"><div class="guide-intro">${introHTML}</div>${content}</div></div><div class="guide-end">${link('/resources/','Explore more resources')}${link('/medical-translation-app/','Meet the FluentCare product')}</div></article>`;
 }

@@ -20,6 +20,15 @@ test('all six page layouts retain a single H1, local breadcrumbs and accessible 
  const malicious=structuredClone(pages[0]);malicious.meta.presentation.features[0].title='<script>alert(1)</script>';
  assert.match(renderPage(malicious,template,false),/&lt;script&gt;alert/);
 });
+test('guide contents number sections 10 and above without an extra zero and offer a direct pdf download',()=>{
+  const headings=Array.from({length:12},(_,index)=>`## Section ${index+1}\n\nText.`).join('\n\n');
+  const meta={slug:'/resources/many-sections/',title:'A long guide',description:'A concise description',heading:'Many sections',status:'draft',page_type:'guide',presentation:{layout:'guide',image:{src:'/assets/clinic-front-desk.jpg',alt:'An illustrative clinic scene',width:1200,height:800,generated:true}}};
+  const body=`${headings}\n\n[Download the cheat sheet (PDF)](/assets/downloads/dental-spanish-cheat-sheet.pdf)\n`;
+  const page=parsePage('---\n'+JSON.stringify(meta)+'\n---\n'+body,'guide.md');
+  const html=renderPage(page,'{{PAGE_CONTENT}}',false);
+  assert.match(html,/<span>09<\/span>/);assert.match(html,/<span>10<\/span>/);assert.match(html,/<span>12<\/span>/);assert.doesNotMatch(html,/<span>010<\/span>/);
+  assert.match(html,/<a class="button" href="\/assets\/downloads\/dental-spanish-cheat-sheet\.pdf" download>Download the cheat sheet \(PDF\)<img class="component-icon" src="\/icons\/ArrowUpRight\.svg"/);
+});
 test('usage example charges only extra minutes and never mutates an account',async()=>{
  const outputs={};const input={value:'80',min:'0',max:'200',style:{setProperty(){}},addEventListener(_,fn){this.update=fn;}};
  const calculator={dataset:{monthly:'20',included:'80',overage:'.3'},querySelector(selector){return selector.startsWith('input')?input:outputs[selector]??= {textContent:''};}};
