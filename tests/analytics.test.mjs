@@ -82,6 +82,22 @@ test('engagement is bounded and native pageleave carries only canonical addresse
 test('click target normalization discards credentials, dynamic paths and query values',()=>{
  assert.equal(linkTarget('/get-started/?email=PRIVATE'),'get_started');assert.equal(linkTarget('https://fluentcare.web.app/support/?secret=PRIVATE'),'app_support');assert.equal(linkTarget('mailto:PRIVATE@example.com'),null);assert.equal(linkTarget('javascript:alert(1)'),null);assert.equal(linkTarget('https://www.fluentcare.io/PRIVATE/'),null);assert.equal(linkTarget('https://PRIVATE@fluentcare.web.app/support/'),null);assert.equal(linkTarget('https://PRIVATE.example/PRIVATE'),'other_external');
 });
+test('the published cheat-sheet button has one fixed click target without accepting arbitrary files',()=>{
+ assert.equal(linkTarget('/assets/downloads/dental-spanish-cheat-sheet.pdf?email=PRIVATE#PRIVATE'),'dental_spanish_pdf');
+ assert.equal(linkTarget('https://www.fluentcare.io/assets/downloads/dental-spanish-cheat-sheet.pdf'),'dental_spanish_pdf');
+ assert.equal(linkTarget('/assets/downloads/PRIVATE.pdf'),null);
+ assert.equal(linkTarget('https://PRIVATE@www.fluentcare.io/assets/downloads/dental-spanish-cheat-sheet.pdf'),null);
+});
+test('phone PDF click keeps attribution and consent limits without implying a completed download',()=>{
+ const s=setup({location:{protocol:'https:',hostname:'www.fluentcare.io',pathname:'/resources/dental-spanish-phrases/',search:'?email=PRIVATE'}});
+ const extra={target_key:linkTarget('/assets/downloads/dental-spanish-cheat-sheet.pdf'),click_area:'article',placement_index:1,href:'PRIVATE',filename:'PRIVATE'};
+ assert.equal(s.analytics.capture('website_link_clicked',extra),false);assert.equal(s.sent.length,0);
+ s.analytics.choose('allowed');assert.equal(s.analytics.capture('website_link_clicked',extra),true);
+ const click=last(s);assert.equal(click.event,'website_link_clicked');assert.equal(click.properties.target_key,'dental_spanish_pdf');assert.equal(click.properties.page_key,'dental_spanish_phrases');assert.equal(click.properties.viewport_type,'phone');assert.equal(click.properties.acquisition_platform,'google');
+ assert.equal(events(s,'get_started_clicked').length,0);assert.doesNotMatch(JSON.stringify(s.sent),/PRIVATE|download_completed|app_download/);
+ s.analytics.choose('denied');const count=s.sent.length;assert.equal(s.analytics.capture('website_link_clicked',extra),false);assert.equal(s.sent.length,count);
+ const blocked=setup({navigator:{globalPrivacyControl:true}});blocked.analytics.choose('allowed');assert.equal(blocked.analytics.capture('website_link_clicked',extra),false);assert.equal(blocked.sent.length,0);
+});
 test('click positions distinguish header navigation, header CTA, hero and footer',()=>{
  for(const [selector,key] of [['.site-header nav','header_navigation'],['header.site-header','header_cta'],['.hero-actions,.hero-copy,.page-hero','hero'],['.site-footer','footer']])assert.equal(clickArea({closest:s=>s===selector}),key);
 });
