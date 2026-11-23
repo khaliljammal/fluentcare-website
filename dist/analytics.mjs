@@ -23,7 +23,7 @@ const MEDIUMS=new Set(['none','organic','social','email','referral','cpc','paid_
 export const CAMPAIGNS=Object.freeze({'website-launch':'website_launch','ai-medical-translator':'ai_medical_translator','language-access-guide':'language_access_guide','clinic-outreach':'clinic_outreach'});
 const CAMPAIGN_KEYS=new Set(['none','unrecognized',...Object.values(CAMPAIGNS)]);
 const AREAS=new Set(['header_navigation','header_cta','hero','footer','next_step','section_navigation','article','faq','owner_card','staff_card','pricing_card','breadcrumbs','content']);
-const TARGETS=new Set([...PAGE_KEYS,'app_dashboard','app_support','app_terms','app_privacy','source_ahrq','source_pubmed','other_external','page_section']);
+const TARGETS=new Set([...PAGE_KEYS,'dental_spanish_pdf','app_dashboard','app_support','app_terms','app_privacy','source_ahrq','source_pubmed','other_external','page_section']);
 const CONTROLS=new Set(['demo_play','demo_stop','example_welcome','example_appointment','example_comfort','walkthrough_1','walkthrough_2','walkthrough_3','pricing_calculator',...Array.from({length:20},(_,i)=>'disclosure_'+(i+1))]);
 const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[47][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 const read=(s,k)=>{try{return s.getItem(k);}catch{return null;}};
@@ -169,7 +169,7 @@ export function clickArea(element){
 export function linkTarget(href,base='https://www.fluentcare.io/'){
  try{
   const url=new URL(href,base);if(url.username||url.password||!['http:','https:'].includes(url.protocol))return null;
-  if(['www.fluentcare.io','fluentcare.io'].includes(url.hostname))return PAGES[url.pathname]?.[0]||null;
+  if(['www.fluentcare.io','fluentcare.io'].includes(url.hostname))return url.pathname==='/assets/downloads/dental-spanish-cheat-sheet.pdf'?'dental_spanish_pdf':PAGES[url.pathname]?.[0]||null;
   if(url.origin==='https://fluentcare.web.app')return ({'/':'app_dashboard','/support/':'app_support','/terms/':'app_terms','/privacy-policy/':'app_privacy'})[url.pathname]||null;
   if(url.hostname==='www.ahrq.gov')return 'source_ahrq';
   if(url.hostname==='pubmed.ncbi.nlm.nih.gov')return 'source_pubmed';
